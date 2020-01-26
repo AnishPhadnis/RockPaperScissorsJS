@@ -21,22 +21,90 @@
                 switch (computerSelection){
 
                     case 'rock':
-                        return playerSelection == 'rock' ? "It's a tie" : 
-                            playerSelection == 'paper' ? "You win! Paper beats scissor!":
-                            "You lose! Rock beats scissors!";
+                        return playerSelection == 'rock' ? ["It's a tie", "tie"] : 
+                            playerSelection == 'paper' ? ["You win! Paper beats scissor!", true]:
+                            ["You lose! Rock beats scissors!", false];
 
                     case 'paper':
-                        return playerSelection == 'rock' ? "You lose! Paper beats rock!" : 
-                            playerSelection == 'paper' ? "It's a tie!":
-                            "You win! Scissors beats paper!";
+                        return playerSelection == 'rock' ? ["You lose! Paper beats rock!", false] : 
+                            playerSelection == 'paper' ? ["It's a tie!", "tie"]:
+                            ["You win! Scissors beats paper!", true];
                     
                     case 'scissors':
-                        return playerSelection == 'rock' ? "You win! Rock beats paper!" : 
-                            playerSelection == 'paper' ? "You lose! Scissors beats rock!":
-                            "It's a tie!";
+                        return playerSelection == 'rock' ? ["You win! Rock beats paper!", true] : 
+                            playerSelection == 'paper' ? ["You lose! Scissors beats rock!", false]:
+                            ["It's a tie!", "tie"];
                         
                 }
             }
+
+            function playerPlay() {
+                let validInput = false;
+                let playerSelection;
+
+                while (validInput == false){ 
+                    playerSelection = prompt('Rock, Paper, Scissors!'); 
+                    validInput = checkInput(playerSelection);
+
+                } 
+
+                return playerSelection
+            }
+
+            function game (){
+                let computerWin = 0;
+                let playerWin = 0;
+                let resultOfRound;
+                let didWin;
+                
+                for (i = 0; i < 5; i++){
+                    resultOfRound = resultOfGame(playerPlay(), computerPlay());
+                    console.log(resultOfRound[0]);
+
+                    if (resultOfRound[1] == true){
+                        playerWin += 1;
+                    }
+                    
+                    else if (!(resultOfRound[1])){
+                        computerWin += 1;
+                    }
+                    
+                }
+
+                didWin = finalResult(playerWin, computerWin);
+
+                console.log(didWin + " The score was " + playerWin + "-" + computerWin + ".");
+            }
+
+            function finalResult (playerWin, computerWin){
+
+                if (playerWin > computerWin){
+                        return "YOU WIN!!!"
+                    }
+
+                    else if (playerWin < computerWin){
+                        return "You lose..."
+                    }
+
+                    else{
+                        return "It was a tie!"
+                    }
+            }
+            
+            function checkInput (playerResponse) {
+                playerResponse = playerResponse.toLowerCase();
+                
+                if(playerResponse == 'rock' || playerResponse == 'paper' || playerResponse == 'scissors'){
+                    return true
+                }
+
+                else {
+                    console.log('Not a valid response!');
+                    return false
+                }
+            } 
+
+            game();
 
 
 
