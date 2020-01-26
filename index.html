@@ -8,19 +8,38 @@
 
     <body>
         <script>
-            const MAX = 57;
-            let actual = MAX - 13;
-            let percentage = actual / MAX;
+
+            function computerPlay (){
+                let turn = ['rock', 'paper', 'scissors'];
+                return turn[Math.floor(Math.random() * 3)];
+            }
+
+            function resultOfGame (playerSelection, computerSelection){
+                computerSelection = computerPlay();
+                playerSelection = playerSelection.toLowerCase();
+
+                switch (computerSelection){
+
+                    case 'rock':
+                        return playerSelection == 'rock' ? "It's a tie" : 
+                            playerSelection == 'paper' ? "You win! Paper beats scissor!":
+                            "You lose! Rock beats scissors!";
+
+                    case 'paper':
+                        return playerSelection == 'rock' ? "You lose! Paper beats rock!" : 
+                            playerSelection == 'paper' ? "It's a tie!":
+                            "You win! Scissors beats paper!";
+                    
+                    case 'scissors':
+                        return playerSelection == 'rock' ? "You win! Rock beats paper!" : 
+                            playerSelection == 'paper' ? "You lose! Scissors beats rock!":
+                            "It's a tie!";
+                        
+                }
+            }
 
 
 
-
-
-
-
-
-
-        
         </script>
     </body>
 
