@@ -59,7 +59,7 @@
                 
                 for (i = 0; i < 5; i++){
                     resultOfRound = resultOfGame(playerPlay(), computerPlay());
-                    console.log(resultOfRound[0]);
+                    alert(resultOfRound[0]);
 
                     if (resultOfRound[1] == true){
                         playerWin += 1;
@@ -73,7 +73,7 @@
 
                 didWin = finalResult(playerWin, computerWin);
 
-                console.log(didWin + " The score was " + playerWin + "-" + computerWin + ".");
+                alert(didWin + " The score was " + playerWin + "-" + computerWin + ".");
             }
 
             function finalResult (playerWin, computerWin){
@@ -99,7 +99,7 @@
                 }
 
                 else {
-                    console.log('Not a valid response!');
+                    alert('Not a valid response!');
                     return false
                 }
             } 
